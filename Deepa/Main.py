@@ -246,7 +246,7 @@ def TaskExecution():
             
             #To Open Epic games
             if 'open epic games' in query:
-                epath="C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher"
+                epath="Path"
                 speak("opening Epic Games Launcher")
                 os.startfile(epath)
             
@@ -257,19 +257,19 @@ def TaskExecution():
             
             #To Open discord
             if 'open discord' in query:
-                dpath="C:\\Users\\nilad\\AppData\\Local\\Discord\\update"
+                dpath="Path"
                 speak("opening Discord")
                 os.startfile(dpath)
 
             #To Open Telegram
             if 'open telegram' in query:
-                tpath="C:\\Users\\nilad\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Telegram Desktop\\Telegram"
+                tpath="Path"
                 speak("opening Telegram")
                 os.startfile(tpath)
             
             #To open Whatsapp
             if 'open whatsapp' in query:
-                wpath="C:\\Users\\nilad\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Telegram Desktop\\Telegram"
+                wpath="Path"
                 speak("opening Whatsapp!!!")
                 os.startfile(wpath)
 
@@ -285,7 +285,7 @@ def TaskExecution():
                 os.system('taskkill /f /im cmd.exe')
             #To Open Chrome
             if 'open google chrome' in query:
-                cpath="C:\\Program Files\\Google\\Chrome\\Application\\chrome"
+                cpath="Path"
                 speak("opening Chrome")
                 os.startfile(cpath)
             
@@ -304,7 +304,7 @@ def TaskExecution():
             
             #play music
             if 'play music' in query:
-                folder_path="C:\\Users\\nilad\\Desktop\\Songs"
+                folder_path="Path"
                 song=play_songs_from_folder(folder_path)
 
             #pause music
@@ -317,7 +317,7 @@ def TaskExecution():
             
             #Switch Track 
             if 'switch track' in query:
-                folder_path="C:\\Users\\nilad\\Desktop\\Songs"
+                folder_path="Path"
                 play_songs_with_controls(folder_path)
 
             #show ip address
@@ -348,7 +348,7 @@ def TaskExecution():
             
             #send message
             if 'send message' in query:
-                kit.sendwhatmsg("+919830883792","This is a testing protocol",22,52)
+                kit.sendwhatmsg("Number","This is a testing protocol",22,52)
             
             #send sms
             #password = Niiladri@roy232002
@@ -360,14 +360,14 @@ def TaskExecution():
 
                 from twilio.rest import Client
 
-                account_sid = 'AC8b0871d2e3b810ce8873c4a6c93e7b76'
-                auth_token = '7c6548df35000f2043e6fee9fcf2df74'
+                account_sid = 's_id'
+                auth_token = 'Token'
                 client = Client(account_sid, auth_token)
 
                 message = client.messages.create(
-                   from_='+12312726633',
+                   from_='Number',
                    body=msz,
-                   to='+919830883792'and '+918777624515' and '+917044632505' and '+918334015748'
+                   to='Number 1'and 'Number 2' and 'Number 3' and 'Number 4'
                 )
 
                 print(message.sid)
@@ -377,15 +377,15 @@ def TaskExecution():
 
                 from twilio.rest import Client
 
-                account_sid = 'AC8b0871d2e3b810ce8873c4a6c93e7b76'
-                auth_token = '7c6548df35000f2043e6fee9fcf2df74'
+                account_sid = 'Account_id'
+                auth_token = 'Token'
                 client = Client(account_sid, auth_token)
 
                 message = client.calls\
                     .create(
                    twiml='<Response><Say>Hello This is Deepa</Say></Response>',
-                   from_='+12312726633',
-                   to='+919830883792'#and '+918777624515' and '+917044632505' and '+918334015748''''
+                   from_='Number',
+                   to='Number'
                 )
 
                 print(message.sid)
@@ -423,70 +423,6 @@ def TaskExecution():
             #volume unmute
             if "volume Unmute" in query:
                 pyautogui.press("volumeunmute")
-
-            #send email
-            if 'send email' in query:
-                
-                print("What Should I say?")
-                speak("What Should I say?")
-                content=takecommand().lower()
-                if'send a file' in content:
-                    email="niladridattaroy25@gmail.com"
-                    password="Niladri@25uem"
-                    to="niladridatta23@gmail.com"
-                    print("OK sir, what is the Subject for the email ?")
-                    speak("OK sir, what is the Subject for the email ?")
-                    content=takecommand().lower()
-                    subject=content
-
-                    print("and sir, What is the message for this email?")
-                    speak("and sir, What is the message for this email?")
-                    content2=takecommand().lower()
-                    message=content2
-                    speak("Sir please enter the correct path of the file in the shell")
-                    location=input("Please Enter the path here: ")
-
-                    speak("Please wait I am sending the email now")
-
-                    msg=MIMEMultipart()
-                    msg['From']=email
-                    msg['To']=to
-                    msg['Subject']=subject
-
-                    msg.attach(MIMEText(message, 'plain'))
-
-                    #Setup the attachment
-                    filename=os.path.basename(location)
-                    attatchment=open(location, "rb")
-                    part=MIMEBase('application', 'octate-base')
-                    part.set_payload(attatchment.read())
-                    encoders.encode_base64(part)
-                    part.add_header('content-Disposition', 'attatchment; filename= %s'% filename)
-
-                    #Attach the attachment
-                    msg.attach(part)
-
-                    server=smtplib.SMTP('smtp.gmail.com', 587)
-                    server.starttls()
-                    server.login(email, password)
-                    text=msg.as_string()
-                    server.sendmail(email, to, text)
-                    server.quit()
-                    print("The message has been sent to Niladri")
-                    speak("The message has been sent to Niladri")
-
-                else:
-                    email="niladridattaroy25@gmail.com"
-                    password="Niladri@25uem"
-                    to="niladridatta23@gmail.com" 
-                    message=content
-                    server=smtplib.SMTP('smtp.gmail.com', 587)
-                    server.startis()
-                    server.login(email, password)
-                    server.sendmail(email, to, text)
-                    server.quit()
-                    print("The message has been sent to Niladri")
-                    speak("The message has been sent to Niladri")
         
             #set alarm
             if 'set alarm' in query:
@@ -660,41 +596,6 @@ def TaskExecution():
              print("Thank You for using me sir!, Have a nice day ahead!")
              speak("Thank You for using me sir!, have a nice day ahead!")
              sys.exit()
-            #startexecution= MainThread()
-
-'''class Main(QMainWindow):
-                def __init__(self):
-                    super().__init__
-                    self.ui= Ui_Jarvis()
-                    self.ui.setupUi(self)
-                    self.ui.pushButton.clicked.connect(self.startTask)
-                    self.ui.pushButton_2.clicked.connect(self,close)
-
-                def startTask(self):
-                    self.ui.movie = QtGui.QMovie("../../Downloads/Nt6v.gif")
-                    self.ui.label.setMovie(self.ui.movie)
-                    self.ui.movie.start()
-
-                    self.ui.movie = QtGui.QMovie("../../Downloads/T8bahf.gif")
-                    self.ui.label_2.setMovie(self.ui.movie)
-                    self.ui.movie.start()
-                    timer= QTimer(self)
-                    timer.timeout.connect(self,showTime)
-                    timer.start(1000)
-                    startexecution.start()
-
-                def showTime(self):
-                    current_time = QTime.currentTime()
-                    current_date= QDate.currentDate()
-                    label_time = current_time.toString('hh:mm:ss')
-                    label_date= current_date.toString(Qt.ISODate)
-                    self.ui.textBrowser.setText(label_date)
-                    self.ui.textBrowser.setText(label_time)            
-
-app = QApplication(sys.argv)
-jarvis= Main()
-jarvis.show()
-exit(app_exec_())'''
 
 
 
