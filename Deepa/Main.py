@@ -112,7 +112,7 @@ def wish():
 
 #for news updates
 def news():
-   url='https://newsapi.org/v2/everything?q=tesla&from=2024-12-11&sortBy=publishedAt&apiKey=26f9eb5b86b44a25b80c4f53c9b9b768'
+   url='https://newsapi.org/v2/everything?q=tesla&from=2024-12-11&sortBy=publishedAt&apiKey=''
    page= requests.get(url).json()
    article= page["articles"]
    head=[]
@@ -148,7 +148,7 @@ def takecommand():
             return "none"
         return query
 #play music
-audio_files = [f for f in os.listdir("C:\\Users\\nilad\\Desktop\\Songs") if f.endswith(('.mp3', '.wav'))]
+audio_files = [f for f in os.listdir("") if f.endswith(('.mp3', '.wav'))]
 def play_songs_from_folder(folder_path):
     # Initialize the pygame mixer
     pygame.mixer.init()
@@ -351,8 +351,8 @@ def TaskExecution():
                 kit.sendwhatmsg("Number","This is a testing protocol",22,52)
             
             #send sms
-            #password = Niiladri@roy232002
-            #recovary code = 9Z2UA4BNNHPBSM6P3YQ4BMTY
+            #password =
+            #recovary code = 
             if "send sms" in query:
                 print("sir, what should I send?")
                 speak("sir, what should I send?")
@@ -428,7 +428,7 @@ def TaskExecution():
             if 'set alarm' in query:
                 t=int(datetime.datetime.now().hour())
                 if t==17:
-                    songs="C:\\Users\\nilad\\Desktop\\Songs"
+                    songs=""
                     os.startfile(os.path.join(songs, read))
             
             #jokes
